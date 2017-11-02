@@ -1,0 +1,81 @@
+# dein
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# 非同期処理
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+# ファイル操作
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+# 検索高速化
+[[plugins]]
+repo = 'rking/ag.vim'
+
+# vim で git command
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'gregsexton/gitv.git'
+
+# 補完
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+
+# スニペット
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# indent色分け
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+# 括弧を自動で閉じる
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+# status line
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+# 行末の半角スペースを可視化
+# :FixWhitespaceで行末半角スペース削除
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# vim で shell
+[[plugins]]
+repo = 'Shougo/vimshell'
+
+# 差分を表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# nerd tree 表示
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+
+# 一気にコメントアウト
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# php doc comment
+[[plugins]]
+repo = 'vim-scripts/PDV--phpDocumentor-for-Vim'
+
+# vdebug
+[[plugins]]
+repo = 'joonty/vdebug'
+
+# colorscheme solarized
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
