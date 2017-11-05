@@ -1,7 +1,3 @@
 /vim/dein/swap/*
-/vim/dein/.cache/*
-/vim/dein/cache_vi
-/vim/dein/cache_vim
-/vim/dein/repos/
-/vim/dein/state_vi.vim
-/vim/dein/state_vim.vim
+/dein/.cache/*
+/dein/repos/*
