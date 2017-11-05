@@ -1,8 +1,7 @@
 " ----- dein setting start -----
-"dein.vim dark power
+
 let s:dein_dir = expand('~/dotfiles/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
 set nocompatible
 " dein.vim をインストールしていない場合は自動インストール
 if !isdirectory(s:dein_repo_dir)
@@ -62,9 +61,9 @@ nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
-	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-	let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
 endif
 
 " CtrlPでも使う
@@ -101,6 +100,54 @@ command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 " CtrlPFunkyの有効化
 let g:ctrlp_funky_matchtype = 'path' 
 
+" --- nerdtree ---
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
+let g:NERDTreeDirArrows = 0.5
+let g:NERDTreeDirArrowExpandable  = '>'
+let g:NERDTreeDirArrowCollapsible = '|'
+nnoremap <C-h> gt
+nnoremap <C-l> gT
+let NERDTreeWinSize=20
+
+" --- php doc ---
+inoremap <C-c> <ESC>:call PhpDocSingle()<CR>i
+nnoremap <C-c> :call PhpDocSingle()<CR>
+vnoremap <C-c> :call PhpDocRange()<CR>-
+
+" --- indent guide ---
+" let g:indent_guides_auto_colors=0
+" " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+" let g:indent_guides_enable_on_vim_startup=1
+" " ガイドをスタートするインデントの量
+" let g:indent_guides_start_level=1
+" " 自動カラーを無効にする
+" let g:indent_guides_auto_colors=0
+" " 奇数インデントのカラー
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+" " 偶数インデントのカラー
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+" " ハイライト色の変化の幅
+" let g:indent_guides_color_change_percent = 130
+" " ガイドの幅
+" let g:indent_guides_guide_size = 1
 
 " ----- vim setting start -----
 
@@ -192,9 +239,38 @@ syntax on "color code
 set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 syntax enable " 構文に色を付ける
 
+filetype plugin indent on
 
+" 不可視文字表示
+set list  " 不可視文字を表示する
+set listchars=tab:>-,trail:.  " タブを >--- 半スペを . で表示する
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
 
-" swp output directory
+" insert mode hjkl
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-h> <Left>
+imap <C-l> <Right>
+
+" swap output directory
 set directory=~/dotfiles/vim/swap
+" backup output directory
+set backupdir=~/dotfiles/vim/backup
+
+" カーソル位置を最後に開いた場所にする
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
 " ----- vim setting end -----

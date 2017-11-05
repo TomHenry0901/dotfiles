@@ -1,3 +1,4 @@
-/vim/dein/swap/*
+vim/swap/*
+vim/backup/*
 /dein/.cache/*
 /dein/repos/*
