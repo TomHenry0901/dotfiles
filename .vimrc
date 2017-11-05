@@ -256,11 +256,12 @@ if has('syntax')
     call ZenkakuSpace()
 endif
 
-" insert mode hjkl
+" insert mode hjkl delete
 imap <C-k> <Up>
 imap <C-j> <Down>
 imap <C-h> <Left>
 imap <C-l> <Right>
+imap <C-g> <backspace>
 
 " swap output directory
 set directory=~/dotfiles/vim/swap
