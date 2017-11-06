@@ -79,14 +79,14 @@ set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
 
 " --- neocomplete.vim ---
-if has('lua') " lua機能が有効になっている場合・・・・・・①
-    " コードの自動補完
-    NeoBundle 'Shougo/neocomplete.vim'
-    " スニペットの補完機能
-    NeoBundle "Shougo/neosnippet"
-    " スニペット集
-    NeoBundle 'Shougo/neosnippet-snippets'
-endif
+" if has('lua') " lua機能が有効になっている場合・・・・・・①
+"     " コードの自動補完
+"     NeoBundle 'Shougo/neocomplete.vim'
+"     " スニペットの補完機能
+"     NeoBundle "Shougo/neosnippet"
+"     " スニペット集
+"     NeoBundle 'Shougo/neosnippet-snippets'
+" endif
 
 " --- CtrlP ---
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100' " マッチウインドウの設定. 「下部に表示, 大きさ20行で固定, 検索結果100件」
@@ -123,8 +123,8 @@ call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
 let g:NERDTreeDirArrows = 0.5
 let g:NERDTreeDirArrowExpandable  = '>'
 let g:NERDTreeDirArrowCollapsible = '|'
-nnoremap <C-h> gt
-nnoremap <C-l> gT
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 let NERDTreeWinSize=20
 
 " --- php doc ---
@@ -147,7 +147,7 @@ vnoremap <C-c> :call PhpDocRange()<CR>-
 " " ハイライト色の変化の幅
 " let g:indent_guides_color_change_percent = 130
 " " ガイドの幅
-" let g:indent_guides_guide_size = 1
+" let g:indent_guides_guide_size = 4
 
 " ----- vim setting start -----
 
@@ -230,6 +230,8 @@ endif
 nnoremap ,i :<C-u>set paste<Return>i
 " クリップボード共有
 set clipboard=unnamed,autoselect
+" yankしたものを貼り付ける
+nnoremap <C-y> "0P"
 
 " ファイル名表示
 set title
@@ -264,9 +266,9 @@ imap <C-l> <Right>
 imap <C-g> <backspace>
 
 " swap output directory
-set directory=~/dotfiles/vim/swap
+set directory=~/dotfiles/swap
 " backup output directory
-set backupdir=~/dotfiles/vim/backup
+set backupdir=~/dotfiles/backup
 
 " カーソル位置を最後に開いた場所にする
 augroup vimrcEx
