@@ -1,4 +1,6 @@
-vim/swap/*
-vim/backup/*
+swap/*
+backup/*
 /dein/.cache/*
 /dein/repos/*
+dein/cache_vim
+dein/state_vim.vim
